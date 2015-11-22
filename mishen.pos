@@ -1,0 +1,20 @@
+### Module positions - created on 16.09.2013 3:47:23 ###
+### Printed by Pcbnew version pcbnew (2013-05-31 BZR 4019)-stable
+## Unit = mm, Angle = deg.
+## Side : All
+# Ref    Val                  Package         PosX       PosY        Rot     Side
+C1       10nf             SM0805             61.9760   -17.7800     180.0    F.Cu
+C2       10nf             SM0805             67.3100   -17.7800       0.0    F.Cu
+C3       C                SM0805             20.3200   -40.6400       0.0    F.Cu
+C4       C                SM0805             52.0700   -35.5600       0.0    F.Cu
+C5       CAPAPOL          SM0805             15.2400   -31.7500     180.0    F.Cu
+C6       CAPAPOL          SM0805             31.7500   -39.3700       0.0    F.Cu
+C7       C                SM0805             55.8800   -34.2900       0.0    F.Cu
+C8       CAPAPOL          SM0805             45.7200   -35.5600       0.0    F.Cu
+C9       C                SM0805             25.9080   -27.4320       0.0    F.Cu
+C10      C                SM0805             45.7200   -38.6080       0.0    F.Cu
+C11      CAPAPOL          SM0805             26.4160   -39.1160       0.0    F.Cu
+C12      CAPAPOL          SM0805             53.3400   -24.8920       0.0    F.Cu
+R1       R                SM0805             16.5100   -40.6400     180.0    F.Cu
+U2       NCP1117ST33T3G   SOT23_INV          19.0500   -35.5600       0.0    F.Cu
+## End

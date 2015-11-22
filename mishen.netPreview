@@ -1,0 +1,30 @@
+(edif (rename CADint_Job "6CA1~1")
+ (edifversion 2 0 0)
+ (ediflevel 0)
+ (keywordmap (keywordlevel 0))
+ (status
+  (written
+   (timeStamp 2013 9 20 19 41 39)
+   (author "EDAConnect.com, Inc.")
+   (program "CADint PCB to EDIF Netlist Writer" (Version "1.00"))
+  )
+ )
+ (library CADint_Primitives
+  (ediflevel 0)
+  (technology (numberDefinition))
+  (cell (rename CADint_Job "6CA1~1")
+   (cellType generic)
+   (view DESIGN
+    (viewtype netlist)
+    (interface
+    )
+    (contents
+    )
+   )
+  )
+ )
+ (design (rename CADint_Job "6CA1~1")
+  (cellRef CADint_Job (libraryRef CADint_Primitives)
+  )
+ )
+)
