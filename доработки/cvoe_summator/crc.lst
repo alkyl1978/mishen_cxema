@@ -1,0 +1,136 @@
+   1               		.file	"crc.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+  15               	.Ltext0:
+  16               	.global	crc16_modbus1
+  18               	crc16_modbus1:
+  19               	.LFB2:
+  20               	.LM1:
+  21               	.LVL0:
+  22               	/* prologue: function */
+  23               	/* frame size = 0 */
+  24 0000 FC01      		movw r30,r24
+  25               	.LM2:
+  26 0002 70E0      		ldi r23,lo8(0)
+  27 0004 8081      		ld r24,Z
+  28 0006 9181      		ldd r25,Z+1
+  29               	.LVL1:
+  30 0008 6827      		eor r22,r24
+  31 000a 7927      		eor r23,r25
+  32               	.LVL2:
+  33 000c 20E0      		ldi r18,lo8(0)
+  34               	.LVL3:
+  35               	.LM3:
+  36 000e 41E0      		ldi r20,lo8(-24575)
+  37 0010 50EA      		ldi r21,hi8(-24575)
+  38               	.L4:
+  39               	.LM4:
+  40 0012 CB01      		movw r24,r22
+  41 0014 9695      		lsr r25
+  42 0016 8795      		ror r24
+  43               	.LM5:
+  44 0018 60FD      		sbrc r22,0
+  45 001a 00C0      		rjmp .L2
+  46 001c BC01      		movw r22,r24
+  47 001e 00C0      		rjmp .L3
+  48               	.L2:
+  49 0020 BC01      		movw r22,r24
+  50 0022 6427      		eor r22,r20
+  51 0024 7527      		eor r23,r21
+  52               	.L3:
+  53               	.LM6:
+  54 0026 2F5F      		subi r18,lo8(-(1))
+  55 0028 2830      		cpi r18,lo8(8)
+  56 002a 01F4      		brne .L4
+  57 002c 7183      		std Z+1,r23
+  58 002e 6083      		st Z,r22
+  59               	/* epilogue start */
+  60               	.LM7:
+  61 0030 0895      		ret
+  62               	.LFE2:
+  64               	.global	crc16_modbus
+  66               	crc16_modbus:
+  67               	.LFB4:
+  68               	.LM8:
+  69               	.LVL4:
+  70 0032 CF93      		push r28
+  71 0034 DF93      		push r29
+  72               	/* prologue: function */
+  73               	/* frame size = 0 */
+  74 0036 DC01      		movw r26,r24
+  75               	.LM9:
+  76 0038 4FEF      		ldi r20,lo8(-1)
+  77 003a 5FEF      		ldi r21,hi8(-1)
+  78               	.LVL5:
+  79 003c 70E0      		ldi r23,lo8(0)
+  80               	.LVL6:
+  81               	.LM10:
+  82 003e C1E0      		ldi r28,lo8(-24575)
+  83 0040 D0EA      		ldi r29,hi8(-24575)
+  84               	.LVL7:
+  85               	.L11:
+  86               	.LM11:
+  87 0042 FD01      		movw r30,r26
+  88 0044 E70F      		add r30,r23
+  89 0046 F11D      		adc r31,__zero_reg__
+  90 0048 8081      		ld r24,Z
+  91               	.LVL8:
+  92               	.LM12:
+  93 004a 282F      		mov r18,r24
+  94               	.LVL9:
+  95 004c 30E0      		ldi r19,lo8(0)
+  96 004e 2427      		eor r18,r20
+  97 0050 3527      		eor r19,r21
+  98               	.LVL10:
+  99 0052 80E0      		ldi r24,lo8(0)
+ 100               	.LVL11:
+ 101               	.L10:
+ 102               	.LM13:
+ 103 0054 A901      		movw r20,r18
+ 104 0056 5695      		lsr r21
+ 105 0058 4795      		ror r20
+ 106               	.LVL12:
+ 107               	.LM14:
+ 108 005a 20FF      		sbrs r18,0
+ 109 005c 00C0      		rjmp .L8
+ 110               	.LVL13:
+ 111 005e 4C27      		eor r20,r28
+ 112 0060 5D27      		eor r21,r29
+ 113               	.LVL14:
+ 114               	.L8:
+ 115               	.LM15:
+ 116 0062 8F5F      		subi r24,lo8(-(1))
+ 117 0064 8830      		cpi r24,lo8(8)
+ 118 0066 01F0      		breq .L9
+ 119 0068 9A01      		movw r18,r20
+ 120 006a 00C0      		rjmp .L10
+ 121               	.L9:
+ 122               	.LM16:
+ 123 006c 7F5F      		subi r23,lo8(-(1))
+ 124 006e 6717      		cp r22,r23
+ 125 0070 00F4      		brsh .L11
+ 126               	.LM17:
+ 127 0072 CA01      		movw r24,r20
+ 128               	.LVL15:
+ 129               	/* epilogue start */
+ 130 0074 DF91      		pop r29
+ 131 0076 CF91      		pop r28
+ 132 0078 0895      		ret
+ 133               	.LFE4:
+ 167               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 crc.c
+C:\DOCUME~1\07C4~1\LOCALS~1\Temp/ccVMRYfi.s:2      *ABS*:0000003f __SREG__
+C:\DOCUME~1\07C4~1\LOCALS~1\Temp/ccVMRYfi.s:3      *ABS*:0000003e __SP_H__
+C:\DOCUME~1\07C4~1\LOCALS~1\Temp/ccVMRYfi.s:4      *ABS*:0000003d __SP_L__
+C:\DOCUME~1\07C4~1\LOCALS~1\Temp/ccVMRYfi.s:5      *ABS*:00000034 __CCP__
+C:\DOCUME~1\07C4~1\LOCALS~1\Temp/ccVMRYfi.s:6      *ABS*:00000000 __tmp_reg__
+C:\DOCUME~1\07C4~1\LOCALS~1\Temp/ccVMRYfi.s:7      *ABS*:00000001 __zero_reg__
+C:\DOCUME~1\07C4~1\LOCALS~1\Temp/ccVMRYfi.s:18     .text:00000000 crc16_modbus1
+C:\DOCUME~1\07C4~1\LOCALS~1\Temp/ccVMRYfi.s:66     .text:00000032 crc16_modbus
+
+NO UNDEFINED SYMBOLS

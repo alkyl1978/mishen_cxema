@@ -1,0 +1,295 @@
+   1               		.file	"detektor.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+  15               	.Ltext0:
+  16               	.global	PutChar
+  18               	PutChar:
+  19               	.LFB8:
+  20               	.LM1:
+  21               	.LVL0:
+  22               	/* prologue: function */
+  23               	/* frame size = 0 */
+  24               	.LM2:
+  25 0000 90E0      		ldi r25,lo8(0)
+  26               	.LVL1:
+  27               	.L5:
+  28               	.LM3:
+  29 0002 9198      		cbi 50-32,1
+  30               	.LM4:
+  31 0004 87FF      		sbrs r24,7
+  32 0006 00C0      		rjmp .L2
+  33 0008 909A      		sbi 50-32,0
+  34 000a 00C0      		rjmp .L3
+  35               	.L2:
+  36               	.LM5:
+  37 000c 9098      		cbi 50-32,0
+  38               	.L3:
+  39               	.LM6:
+  40 000e 919A      		sbi 50-32,1
+  41               	.LM7:
+  42 0010 9F5F      		subi r25,lo8(-(1))
+  43 0012 9830      		cpi r25,lo8(8)
+  44 0014 01F0      		breq .L4
+  45               	.LM8:
+  46 0016 880F      		lsl r24
+  47               	.LVL2:
+  48 0018 00C0      		rjmp .L5
+  49               	.L4:
+  50               	.LM9:
+  51 001a 9198      		cbi 50-32,1
+  52               	/* epilogue start */
+  53               	.LM10:
+  54 001c 0895      		ret
+  55               	.LFE8:
+  57               	.global	LoadConfRX
+  59               	LoadConfRX:
+  60               	.LFB7:
+  61               	.LM11:
+  62               	/* prologue: function */
+  63               	/* frame size = 0 */
+  64               	.LM12:
+  65 001e 81B3      		in r24,49-32
+  66 0020 8560      		ori r24,lo8(5)
+  67 0022 81BB      		out 49-32,r24
+  68               	.LM13:
+  69 0024 9598      		cbi 50-32,5
+  70               	.LM14:
+  71 0026 D89A      		sbi 59-32,0
+  72               	.LM15:
+  73 0028 88E0      		ldi r24,lo8(8)
+  74 002a 00D0      		rcall PutChar
+  75               	.LM16:
+  76 002c 88E0      		ldi r24,lo8(8)
+  77 002e 00D0      		rcall PutChar
+  78               	.LM17:
+  79 0030 80E0      		ldi r24,lo8(0)
+  80 0032 00D0      		rcall PutChar
+  81               	.LM18:
+  82 0034 80E0      		ldi r24,lo8(0)
+  83 0036 00D0      		rcall PutChar
+  84               	.LM19:
+  85 0038 80E0      		ldi r24,lo8(0)
+  86 003a 00D0      		rcall PutChar
+  87               	.LM20:
+  88 003c 87EE      		ldi r24,lo8(-25)
+  89 003e 00D0      		rcall PutChar
+  90               	.LM21:
+  91 0040 8BEB      		ldi r24,lo8(-69)
+  92 0042 00D0      		rcall PutChar
+  93               	.LM22:
+  94 0044 80E0      		ldi r24,lo8(0)
+  95 0046 00D0      		rcall PutChar
+  96               	.LM23:
+  97 0048 80E0      		ldi r24,lo8(0)
+  98 004a 00D0      		rcall PutChar
+  99               	.LM24:
+ 100 004c 80E0      		ldi r24,lo8(0)
+ 101 004e 00D0      		rcall PutChar
+ 102               	.LM25:
+ 103 0050 87EE      		ldi r24,lo8(-25)
+ 104 0052 00D0      		rcall PutChar
+ 105               	.LM26:
+ 106 0054 8AEA      		ldi r24,lo8(-86)
+ 107 0056 00D0      		rcall PutChar
+ 108               	.LM27:
+ 109 0058 83E4      		ldi r24,lo8(67)
+ 110 005a 00D0      		rcall PutChar
+ 111               	.LM28:
+ 112 005c 8EEC      		ldi r24,lo8(-50)
+ 113 005e 00D0      		rcall PutChar
+ 114               	.LM29:
+ 115 0060 81E2      		ldi r24,lo8(33)
+ 116 0062 00D0      		rcall PutChar
+ 117               	.LM30:
+ 118 0064 D898      		cbi 59-32,0
+ 119               	.LM31:
+ 120               	/* #APP */
+ 121               	 ;  120 "detektor.c" 1
+ 122 0066 0000      		nop
+ 123               	 ;  0 "" 2
+ 124               	.LM32:
+ 125               	/* #NOAPP */
+ 126 0068 959A      		sbi 50-32,5
+ 127               	.LM33:
+ 128 006a 81B3      		in r24,49-32
+ 129 006c 8A7F      		andi r24,lo8(-6)
+ 130 006e 81BB      		out 49-32,r24
+ 131               	.LBB24:
+ 132               	.LBB25:
+ 133               	.LBB26:
+ 134               	.LBB27:
+ 135               	.LM34:
+ 136 0070 8AEF      		ldi r24,lo8(250)
+ 137 0072 90E0      		ldi r25,hi8(250)
+ 138               	.LVL3:
+ 139               	/* #APP */
+ 140               	 ;  105 "c:/winavr/lib/gcc/../../avr/include/util/delay_basic.h" 1
+ 141 0074 0197      		1: sbiw r24,1
+ 142 0076 01F4      		brne 1b
+ 143               	 ;  0 "" 2
+ 144               	/* epilogue start */
+ 145               	/* #NOAPP */
+ 146               	.LBE27:
+ 147               	.LBE26:
+ 148               	.LBE25:
+ 149               	.LBE24:
+ 150               	.LM35:
+ 151 0078 0895      		ret
+ 152               	.LFE7:
+ 154               	.global	main
+ 156               	main:
+ 157               	.LFB6:
+ 158               	.LM36:
+ 159               	/* prologue: function */
+ 160               	/* frame size = 0 */
+ 161               	.LM37:
+ 162 007a 80E0      		ldi r24,lo8(0)
+ 163 007c 90E0      		ldi r25,hi8(0)
+ 164 007e 00D0      		rcall __eerd_byte_tn2313
+ 165 0080 81BF      		out 81-32,r24
+ 166               	.LM38:
+ 167 0082 81E0      		ldi r24,lo8(1)
+ 168 0084 8ABB      		out 58-32,r24
+ 169               	.LM39:
+ 170 0086 83E0      		ldi r24,lo8(3)
+ 171 0088 87BB      		out 55-32,r24
+ 172               	.LM40:
+ 173 008a 8BE6      		ldi r24,lo8(107)
+ 174 008c 81BB      		out 49-32,r24
+ 175               	.LM41:
+ 176 008e 1BBA      		out 59-32,__zero_reg__
+ 177               	.LM42:
+ 178 0090 8FEF      		ldi r24,lo8(-1)
+ 179 0092 88BB      		out 56-32,r24
+ 180               	.LM43:
+ 181 0094 8FE1      		ldi r24,lo8(31)
+ 182 0096 82BB      		out 50-32,r24
+ 183               	.LM44:
+ 184 0098 969A      		sbi 50-32,6
+ 185               	.LBB28:
+ 186               	.LBB29:
+ 187               	.LBB30:
+ 188               	.LBB31:
+ 189               	.LM45:
+ 190 009a 88E8      		ldi r24,lo8(5000)
+ 191 009c 93E1      		ldi r25,hi8(5000)
+ 192               	.LVL4:
+ 193               	/* #APP */
+ 194               	 ;  105 "c:/winavr/lib/gcc/../../avr/include/util/delay_basic.h" 1
+ 195 009e 0197      		1: sbiw r24,1
+ 196 00a0 01F4      		brne 1b
+ 197               	 ;  0 "" 2
+ 198               	/* #NOAPP */
+ 199               	.LBE31:
+ 200               	.LBE30:
+ 201               	.LBE29:
+ 202               	.LBE28:
+ 203               	.LM46:
+ 204 00a2 00D0      		rcall LoadConfRX
+ 205               	.LVL5:
+ 206               	.LBB32:
+ 207               	.LBB33:
+ 208               	.LBB34:
+ 209               	.LBB35:
+ 210               	.LM47:
+ 211 00a4 2AEF      		ldi r18,lo8(250)
+ 212 00a6 30E0      		ldi r19,hi8(250)
+ 213               	.LVL6:
+ 214               	.L14:
+ 215               	.LBE35:
+ 216               	.LBE34:
+ 217               	.LBE33:
+ 218               	.LBE32:
+ 219               	.LM48:
+ 220 00a8 C09A      		sbi 56-32,0
+ 221               	.LM49:
+ 222 00aa C19A      		sbi 56-32,1
+ 223               	.LBB39:
+ 224               	.LBB38:
+ 225               	.LBB37:
+ 226               	.LBB36:
+ 227               	.LM50:
+ 228 00ac C901      		movw r24,r18
+ 229               	/* #APP */
+ 230               	 ;  105 "c:/winavr/lib/gcc/../../avr/include/util/delay_basic.h" 1
+ 231 00ae 0197      		1: sbiw r24,1
+ 232 00b0 01F4      		brne 1b
+ 233               	 ;  0 "" 2
+ 234               	/* #NOAPP */
+ 235 00b2 00C0      		rjmp .L10
+ 236               	.L11:
+ 237               	.LBE36:
+ 238               	.LBE37:
+ 239               	.LBE38:
+ 240               	.LBE39:
+ 241               	.LM51:
+ 242 00b4 C098      		cbi 56-32,0
+ 243               	.LM52:
+ 244 00b6 9198      		cbi 50-32,1
+ 245               	.LM53:
+ 246               	/* #APP */
+ 247               	 ;  79 "detektor.c" 1
+ 248 00b8 0000      		nop
+ 249               	 ;  0 "" 2
+ 250               	.LM54:
+ 251               	/* #NOAPP */
+ 252 00ba 919A      		sbi 50-32,1
+ 253               	.LM55:
+ 254               	/* #APP */
+ 255               	 ;  81 "detektor.c" 1
+ 256 00bc 0000      		nop
+ 257               	 ;  0 "" 2
+ 258               	.LM56:
+ 259               	/* #NOAPP */
+ 260 00be 9198      		cbi 50-32,1
+ 261               	.L10:
+ 262               	.LM57:
+ 263 00c0 C999      		sbic 57-32,1
+ 264 00c2 00C0      		rjmp .L11
+ 265 00c4 00C0      		rjmp .L16
+ 266               	.L17:
+ 267               	.LM58:
+ 268 00c6 C198      		cbi 56-32,1
+ 269               	.LM59:
+ 270 00c8 9198      		cbi 50-32,1
+ 271               	.LM60:
+ 272               	/* #APP */
+ 273               	 ;  89 "detektor.c" 1
+ 274 00ca 0000      		nop
+ 275               	 ;  0 "" 2
+ 276               	.LM61:
+ 277               	/* #NOAPP */
+ 278 00cc 919A      		sbi 50-32,1
+ 279               	.LM62:
+ 280               	/* #APP */
+ 281               	 ;  91 "detektor.c" 1
+ 282 00ce 0000      		nop
+ 283               	 ;  0 "" 2
+ 284               	.LM63:
+ 285               	/* #NOAPP */
+ 286 00d0 9198      		cbi 50-32,1
+ 287               	.L16:
+ 288               	.LM64:
+ 289 00d2 CC9B      		sbis 57-32,4
+ 290 00d4 00C0      		rjmp .L14
+ 291 00d6 00C0      		rjmp .L17
+ 292               	.LFE6:
+ 334               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 detektor.c
+C:\DOCUME~1\07C4~1\LOCALS~1\Temp/cc89iS4y.s:2      *ABS*:0000003f __SREG__
+C:\DOCUME~1\07C4~1\LOCALS~1\Temp/cc89iS4y.s:3      *ABS*:0000003e __SP_H__
+C:\DOCUME~1\07C4~1\LOCALS~1\Temp/cc89iS4y.s:4      *ABS*:0000003d __SP_L__
+C:\DOCUME~1\07C4~1\LOCALS~1\Temp/cc89iS4y.s:5      *ABS*:00000034 __CCP__
+C:\DOCUME~1\07C4~1\LOCALS~1\Temp/cc89iS4y.s:6      *ABS*:00000000 __tmp_reg__
+C:\DOCUME~1\07C4~1\LOCALS~1\Temp/cc89iS4y.s:7      *ABS*:00000001 __zero_reg__
+C:\DOCUME~1\07C4~1\LOCALS~1\Temp/cc89iS4y.s:18     .text:00000000 PutChar
+C:\DOCUME~1\07C4~1\LOCALS~1\Temp/cc89iS4y.s:59     .text:0000001e LoadConfRX
+C:\DOCUME~1\07C4~1\LOCALS~1\Temp/cc89iS4y.s:156    .text:0000007a main
+
+UNDEFINED SYMBOLS
+__eerd_byte_tn2313

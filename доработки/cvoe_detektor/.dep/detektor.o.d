@@ -1,0 +1,1 @@
+detektor.o: detektor.c

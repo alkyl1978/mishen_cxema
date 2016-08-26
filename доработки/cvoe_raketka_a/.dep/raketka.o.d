@@ -1,0 +1,1 @@
+raketka.o: raketka.c

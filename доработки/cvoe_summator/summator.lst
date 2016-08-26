@@ -1,0 +1,124 @@
+   1               		.file	"summator.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+  15               	.Ltext0:
+  16               	.global	code
+  17               		.data
+  20               	code:
+  21 0000 33        		.byte	51
+  22               	.global	time_d
+  25               	time_d:
+  26 0001 0B        		.byte	11
+  27               	.global	time_t
+  30               	time_t:
+  31 0002 EE02      		.word	750
+  32               	.global	time_p
+  35               	time_p:
+  36 0004 23        		.byte	35
+  37               		.text
+  38               	.global	main
+  40               	main:
+  41               	.LFB2:
+  42               	.LM1:
+  43 0000 1F93      		push r17
+  44               	/* prologue: function */
+  45               	/* frame size = 0 */
+  46               	.LM2:
+  47 0002 00D0      		rcall init_pr
+  48               	.LM3:
+  49 0004 00D0      		rcall Init_uart
+  50               	.LM4:
+  51 0006 00D0      		rcall Enable_RX
+  52               	.LM5:
+  53               	/* #APP */
+  54               	 ;  36 "summator.c" 1
+  55 0008 7894      		sei
+  56               	 ;  0 "" 2
+  57               	.LM6:
+  58               	/* #NOAPP */
+  59 000a 11E0      		ldi r17,lo8(1)
+  60               	.L7:
+  61               	.LM7:
+  62 000c 9091 0000 		lds r25,flag
+  63 0010 91FF      		sbrs r25,1
+  64 0012 00C0      		rjmp .L3
+  65               	.LM8:
+  66 0014 8091 0000 		lds r24,Buf_ok
+  67 0018 8093 0000 		sts code,r24
+  68               	.LM9:
+  69 001c 4091 0000 		lds r20,Buf_ok+1
+  70               	.LM10:
+  71 0020 3091 0000 		lds r19,Buf_ok+2
+  72               	.LM11:
+  73 0024 2091 0000 		lds r18,Buf_ok+3
+  74               	.LM12:
+  75 0028 9D7F      		andi r25,lo8(-3)
+  76 002a 9093 0000 		sts flag,r25
+  77               	.LM13:
+  78 002e 1092 6800 		sts 104,__zero_reg__
+  79               	.LM14:
+  80 0032 1BBA      		out 59-32,__zero_reg__
+  81               	.LM15:
+  82 0034 1DBA      		out 61-32,__zero_reg__
+  83               	.LM16:
+  84 0036 1CBA      		out 60-32,__zero_reg__
+  85               	.LM17:
+  86 0038 8091 0000 		lds r24,code
+  87 003c 8333      		cpi r24,lo8(51)
+  88 003e 01F0      		breq .L4
+  89 0040 8939      		cpi r24,lo8(-103)
+  90 0042 01F4      		brne .L7
+  91 0044 00C0      		rjmp .L9
+  92               	.L4:
+  93 0046 2093 0000 		sts time_p,r18
+  94 004a 3093 0000 		sts time_t,r19
+  95 004e 1092 0000 		sts time_t+1,__zero_reg__
+  96 0052 4093 0000 		sts time_d,r20
+  97               	.LM18:
+  98 0056 00D0      		rcall Init_dat_r33
+  99 0058 00C0      		rjmp .L7
+ 100               	.L9:
+ 101               	.LM19:
+ 102 005a 2093 0000 		sts time_p,r18
+ 103 005e 3093 0000 		sts time_t,r19
+ 104 0062 1092 0000 		sts time_t+1,__zero_reg__
+ 105 0066 4093 0000 		sts time_d,r20
+ 106               	.LM20:
+ 107 006a 1DBB      		out 61-32,r17
+ 108               	.LM21:
+ 109 006c 1CBA      		out 60-32,__zero_reg__
+ 110               	.LM22:
+ 111 006e 8093 0000 		sts Buf_out,r24
+ 112 0072 00C0      		rjmp .L7
+ 113               	.L3:
+ 114               	.L8:
+ 115 0074 00C0      		rjmp .L8
+ 116               	.LFE2:
+ 142               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 summator.c
+C:\DOCUME~1\07C4~1\LOCALS~1\Temp/ccRmP2Dz.s:2      *ABS*:0000003f __SREG__
+C:\DOCUME~1\07C4~1\LOCALS~1\Temp/ccRmP2Dz.s:3      *ABS*:0000003e __SP_H__
+C:\DOCUME~1\07C4~1\LOCALS~1\Temp/ccRmP2Dz.s:4      *ABS*:0000003d __SP_L__
+C:\DOCUME~1\07C4~1\LOCALS~1\Temp/ccRmP2Dz.s:5      *ABS*:00000034 __CCP__
+C:\DOCUME~1\07C4~1\LOCALS~1\Temp/ccRmP2Dz.s:6      *ABS*:00000000 __tmp_reg__
+C:\DOCUME~1\07C4~1\LOCALS~1\Temp/ccRmP2Dz.s:7      *ABS*:00000001 __zero_reg__
+C:\DOCUME~1\07C4~1\LOCALS~1\Temp/ccRmP2Dz.s:20     .data:00000000 code
+C:\DOCUME~1\07C4~1\LOCALS~1\Temp/ccRmP2Dz.s:25     .data:00000001 time_d
+C:\DOCUME~1\07C4~1\LOCALS~1\Temp/ccRmP2Dz.s:30     .data:00000002 time_t
+C:\DOCUME~1\07C4~1\LOCALS~1\Temp/ccRmP2Dz.s:35     .data:00000004 time_p
+C:\DOCUME~1\07C4~1\LOCALS~1\Temp/ccRmP2Dz.s:40     .text:00000000 main
+
+UNDEFINED SYMBOLS
+init_pr
+Init_uart
+Enable_RX
+flag
+Buf_ok
+Init_dat_r33
+Buf_out
+__do_copy_data

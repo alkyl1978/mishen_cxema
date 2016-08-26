@@ -1,0 +1,308 @@
+
+detektor.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00000120  00000000  00000000  00000054  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .debug_aranges 00000020  00000000  00000000  00000174  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  2 .debug_pubnames 00000036  00000000  00000000  00000194  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  3 .debug_info   000001c8  00000000  00000000  000001ca  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  4 .debug_abbrev 0000010f  00000000  00000000  00000392  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_line   00000311  00000000  00000000  000004a1  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_frame  00000040  00000000  00000000  000007b4  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_str    000000bf  00000000  00000000  000007f4  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_loc    00000018  00000000  00000000  000008b3  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_ranges 00000048  00000000  00000000  000008cb  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	12 c0       	rjmp	.+36     	; 0x26 <__ctors_end>
+   2:	17 c0       	rjmp	.+46     	; 0x32 <__bad_interrupt>
+   4:	16 c0       	rjmp	.+44     	; 0x32 <__bad_interrupt>
+   6:	15 c0       	rjmp	.+42     	; 0x32 <__bad_interrupt>
+   8:	14 c0       	rjmp	.+40     	; 0x32 <__bad_interrupt>
+   a:	13 c0       	rjmp	.+38     	; 0x32 <__bad_interrupt>
+   c:	12 c0       	rjmp	.+36     	; 0x32 <__bad_interrupt>
+   e:	11 c0       	rjmp	.+34     	; 0x32 <__bad_interrupt>
+  10:	10 c0       	rjmp	.+32     	; 0x32 <__bad_interrupt>
+  12:	0f c0       	rjmp	.+30     	; 0x32 <__bad_interrupt>
+  14:	0e c0       	rjmp	.+28     	; 0x32 <__bad_interrupt>
+  16:	0d c0       	rjmp	.+26     	; 0x32 <__bad_interrupt>
+  18:	0c c0       	rjmp	.+24     	; 0x32 <__bad_interrupt>
+  1a:	0b c0       	rjmp	.+22     	; 0x32 <__bad_interrupt>
+  1c:	0a c0       	rjmp	.+20     	; 0x32 <__bad_interrupt>
+  1e:	09 c0       	rjmp	.+18     	; 0x32 <__bad_interrupt>
+  20:	08 c0       	rjmp	.+16     	; 0x32 <__bad_interrupt>
+  22:	07 c0       	rjmp	.+14     	; 0x32 <__bad_interrupt>
+  24:	06 c0       	rjmp	.+12     	; 0x32 <__bad_interrupt>
+
+00000026 <__ctors_end>:
+  26:	11 24       	eor	r1, r1
+  28:	1f be       	out	0x3f, r1	; 63
+  2a:	cf ed       	ldi	r28, 0xDF	; 223
+  2c:	cd bf       	out	0x3d, r28	; 61
+  2e:	3f d0       	rcall	.+126    	; 0xae <main>
+  30:	75 c0       	rjmp	.+234    	; 0x11c <_exit>
+
+00000032 <__bad_interrupt>:
+  32:	e6 cf       	rjmp	.-52     	; 0x0 <__vectors>
+
+00000034 <PutChar>:
+}
+
+//**********************************************************************
+
+void PutChar(unsigned char cha)
+{
+  34:	90 e0       	ldi	r25, 0x00	; 0
+ unsigned char i;
+ for(i=0;i<8;i++)
+ {            
+    cls0;  
+  36:	91 98       	cbi	0x12, 1	; 18
+    if(cha&0x80) dat1;
+  38:	87 ff       	sbrs	r24, 7
+  3a:	02 c0       	rjmp	.+4      	; 0x40 <__SREG__+0x1>
+  3c:	90 9a       	sbi	0x12, 0	; 18
+  3e:	01 c0       	rjmp	.+2      	; 0x42 <__SREG__+0x3>
+    else dat0; 
+  40:	90 98       	cbi	0x12, 0	; 18
+    cha<<=1;
+    cls1;
+  42:	91 9a       	sbi	0x12, 1	; 18
+//**********************************************************************
+
+void PutChar(unsigned char cha)
+{
+ unsigned char i;
+ for(i=0;i<8;i++)
+  44:	9f 5f       	subi	r25, 0xFF	; 255
+  46:	98 30       	cpi	r25, 0x08	; 8
+  48:	11 f0       	breq	.+4      	; 0x4e <__SREG__+0xf>
+ {            
+    cls0;  
+    if(cha&0x80) dat1;
+    else dat0; 
+    cha<<=1;
+  4a:	88 0f       	add	r24, r24
+  4c:	f4 cf       	rjmp	.-24     	; 0x36 <PutChar+0x2>
+    cls1;
+ } 
+ cls0;
+  4e:	91 98       	cbi	0x12, 1	; 18
+ return;
+}
+  50:	08 95       	ret
+
+00000052 <LoadConfRX>:
+}
+
+//**********************************************************************
+void LoadConfRX(void)
+{
+	DDRD|=(1<<data)|(1<<data2); // переключаем порты на передачу
+  52:	81 b3       	in	r24, 0x11	; 17
+  54:	85 60       	ori	r24, 0x05	; 5
+  56:	81 bb       	out	0x11, r24	; 17
+	ce0;
+  58:	95 98       	cbi	0x12, 5	; 18
+	cs1;     
+  5a:	d8 9a       	sbi	0x1b, 0	; 27
+ 	// передаем конфигурацию.
+	PutChar(0x08);
+  5c:	88 e0       	ldi	r24, 0x08	; 8
+  5e:	ea df       	rcall	.-44     	; 0x34 <PutChar>
+	PutChar(0x08);
+  60:	88 e0       	ldi	r24, 0x08	; 8
+  62:	e8 df       	rcall	.-48     	; 0x34 <PutChar>
+	PutChar(0);
+  64:	80 e0       	ldi	r24, 0x00	; 0
+  66:	e6 df       	rcall	.-52     	; 0x34 <PutChar>
+	PutChar(0);
+  68:	80 e0       	ldi	r24, 0x00	; 0
+  6a:	e4 df       	rcall	.-56     	; 0x34 <PutChar>
+	PutChar(0);
+  6c:	80 e0       	ldi	r24, 0x00	; 0
+  6e:	e2 df       	rcall	.-60     	; 0x34 <PutChar>
+	PutChar(0xe7); //adr_h2
+  70:	87 ee       	ldi	r24, 0xE7	; 231
+  72:	e0 df       	rcall	.-64     	; 0x34 <PutChar>
+ 	PutChar(0xbb); //adr_l2
+  74:	8b eb       	ldi	r24, 0xBB	; 187
+  76:	de df       	rcall	.-68     	; 0x34 <PutChar>
+ 	PutChar(0);
+  78:	80 e0       	ldi	r24, 0x00	; 0
+  7a:	dc df       	rcall	.-72     	; 0x34 <PutChar>
+ 	PutChar(0);
+  7c:	80 e0       	ldi	r24, 0x00	; 0
+  7e:	da df       	rcall	.-76     	; 0x34 <PutChar>
+ 	PutChar(0);
+  80:	80 e0       	ldi	r24, 0x00	; 0
+  82:	d8 df       	rcall	.-80     	; 0x34 <PutChar>
+ 	PutChar(0xe7); //(adr_h1);
+  84:	87 ee       	ldi	r24, 0xE7	; 231
+  86:	d6 df       	rcall	.-84     	; 0x34 <PutChar>
+ 	PutChar(0xaa);  //(adr_l1);
+  88:	8a ea       	ldi	r24, 0xAA	; 170
+  8a:	d4 df       	rcall	.-88     	; 0x34 <PutChar>
+ 	PutChar(0x43);
+  8c:	83 e4       	ldi	r24, 0x43	; 67
+  8e:	d2 df       	rcall	.-92     	; 0x34 <PutChar>
+ 	PutChar(0xce);
+  90:	8e ec       	ldi	r24, 0xCE	; 206
+  92:	d0 df       	rcall	.-96     	; 0x34 <PutChar>
+ 	PutChar(0x21);
+  94:	81 e2       	ldi	r24, 0x21	; 33
+  96:	ce df       	rcall	.-100    	; 0x34 <PutChar>
+ 	cs0;
+  98:	d8 98       	cbi	0x1b, 0	; 27
+ 	nop();
+  9a:	00 00       	nop
+ 	ce1;                 // включаем приемник
+  9c:	95 9a       	sbi	0x12, 5	; 18
+	DDRD&=0xfa; // переключаем порты на прием
+  9e:	81 b3       	in	r24, 0x11	; 17
+  a0:	8a 7f       	andi	r24, 0xFA	; 250
+  a2:	81 bb       	out	0x11, r24	; 17
+    milliseconds can be achieved.
+ */
+void
+_delay_loop_2(uint16_t __count)
+{
+	__asm__ volatile (
+  a4:	8a ef       	ldi	r24, 0xFA	; 250
+  a6:	90 e0       	ldi	r25, 0x00	; 0
+  a8:	01 97       	sbiw	r24, 0x01	; 1
+  aa:	f1 f7       	brne	.-4      	; 0xa8 <LoadConfRX+0x56>
+ 	delay_ms(1);        // делаем выдержку по времени 5 ms.
+}
+  ac:	08 95       	ret
+
+000000ae <main>:
+
+//****************************************************************************
+int main(void)
+{
+unsigned char i,tmp;
+	OSCCAL=eeprom_read_byte(0);
+  ae:	80 e0       	ldi	r24, 0x00	; 0
+  b0:	90 e0       	ldi	r25, 0x00	; 0
+  b2:	2c d0       	rcall	.+88     	; 0x10c <__eerd_byte_tn2313>
+  b4:	81 bf       	out	0x31, r24	; 49
+	// конфигурируем порты
+	DDRA= (1<<cs)|(0<<dr1); // КОНФИГУРИРУЕМ ПОРТЫ А
+  b6:	81 e0       	ldi	r24, 0x01	; 1
+  b8:	8a bb       	out	0x1a, r24	; 26
+	DDRB= (1<<RA1)|(1<<RA2); // конфигурируем порты В
+  ba:	83 e0       	ldi	r24, 0x03	; 3
+  bc:	87 bb       	out	0x17, r24	; 23
+	DDRD= (1<<data)|(1<<clk)|(1<<ce)|(1<<clk2)|(1<<pwr_up)|(0<<dr2); // конфигуриум порты Д
+  be:	8b e6       	ldi	r24, 0x6B	; 107
+  c0:	81 bb       	out	0x11, r24	; 17
+	PORTA=(0<<cs);
+  c2:	1b ba       	out	0x1b, r1	; 27
+	PORTB=0b11111111;
+  c4:	8f ef       	ldi	r24, 0xFF	; 255
+  c6:	88 bb       	out	0x18, r24	; 24
+	PORTD=0b00011111;
+  c8:	8f e1       	ldi	r24, 0x1F	; 31
+  ca:	82 bb       	out	0x12, r24	; 18
+	//*********************************************************************
+	SetBit(PORTD,pwr_up); // включаем приемник
+  cc:	96 9a       	sbi	0x12, 6	; 18
+  ce:	88 e8       	ldi	r24, 0x88	; 136
+  d0:	93 e1       	ldi	r25, 0x13	; 19
+  d2:	01 97       	sbiw	r24, 0x01	; 1
+  d4:	f1 f7       	brne	.-4      	; 0xd2 <main+0x24>
+	delay_ms(20); // задержка при включении
+	LoadConfRX();
+  d6:	bd df       	rcall	.-134    	; 0x52 <LoadConfRX>
+  d8:	2a ef       	ldi	r18, 0xFA	; 250
+  da:	30 e0       	ldi	r19, 0x00	; 0
+	while(1)
+	{
+   		RA11;
+  dc:	c0 9a       	sbi	0x18, 0	; 24
+   		RA21;
+  de:	c1 9a       	sbi	0x18, 1	; 24
+  e0:	c9 01       	movw	r24, r18
+  e2:	01 97       	sbiw	r24, 0x01	; 1
+  e4:	f1 f7       	brne	.-4      	; 0xe2 <__stack+0x3>
+  e6:	06 c0       	rjmp	.+12     	; 0xf4 <__stack+0x15>
+		delay_ms(1);
+   		while (PINA & (1<<dr1_in)) // скидываем принятые данные по первому каналу
+   		{
+		   RA10;
+  e8:	c0 98       	cbi	0x18, 0	; 24
+		   cls0;
+  ea:	91 98       	cbi	0x12, 1	; 18
+		   nop();
+  ec:	00 00       	nop
+		   cls1;
+  ee:	91 9a       	sbi	0x12, 1	; 18
+		   nop();
+  f0:	00 00       	nop
+		   cls0;
+  f2:	91 98       	cbi	0x12, 1	; 18
+	while(1)
+	{
+   		RA11;
+   		RA21;
+		delay_ms(1);
+   		while (PINA & (1<<dr1_in)) // скидываем принятые данные по первому каналу
+  f4:	c9 99       	sbic	0x19, 1	; 25
+  f6:	f8 cf       	rjmp	.-16     	; 0xe8 <__stack+0x9>
+  f8:	06 c0       	rjmp	.+12     	; 0x106 <__stack+0x27>
+		   cls0;
+   		} 
+		  		
+		while (PINA & (1<<dr2_in)) // скидываем принятые данные по второму каналу
+   		{
+		   RA20;
+  fa:	c1 98       	cbi	0x18, 1	; 24
+		   cls0;
+  fc:	91 98       	cbi	0x12, 1	; 18
+		   nop();
+  fe:	00 00       	nop
+		   cls1;
+ 100:	91 9a       	sbi	0x12, 1	; 18
+		   nop();
+ 102:	00 00       	nop
+		   cls0;
+ 104:	91 98       	cbi	0x12, 1	; 18
+		   cls1;
+		   nop();
+		   cls0;
+   		} 
+		  		
+		while (PINA & (1<<dr2_in)) // скидываем принятые данные по второму каналу
+ 106:	cc 9b       	sbis	0x19, 4	; 25
+ 108:	e9 cf       	rjmp	.-46     	; 0xdc <main+0x2e>
+ 10a:	f7 cf       	rjmp	.-18     	; 0xfa <__stack+0x1b>
+
+0000010c <__eerd_byte_tn2313>:
+ 10c:	e1 99       	sbic	0x1c, 1	; 28
+ 10e:	fe cf       	rjmp	.-4      	; 0x10c <__eerd_byte_tn2313>
+ 110:	1f ba       	out	0x1f, r1	; 31
+ 112:	8e bb       	out	0x1e, r24	; 30
+ 114:	e0 9a       	sbi	0x1c, 0	; 28
+ 116:	99 27       	eor	r25, r25
+ 118:	8d b3       	in	r24, 0x1d	; 29
+ 11a:	08 95       	ret
+
+0000011c <_exit>:
+ 11c:	f8 94       	cli
+
+0000011e <__stop_program>:
+ 11e:	ff cf       	rjmp	.-2      	; 0x11e <__stop_program>

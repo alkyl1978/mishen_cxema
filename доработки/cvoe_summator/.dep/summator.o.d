@@ -1,0 +1,1 @@
+summator.o: summator.c

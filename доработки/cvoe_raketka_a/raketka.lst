@@ -1,0 +1,427 @@
+   1               		.file	"raketka.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+  15               	.Ltext0:
+  16               	.global	PutChar
+  18               	PutChar:
+  19               	.LFB8:
+  20               	.LM1:
+  21               	.LVL0:
+  22               	/* prologue: function */
+  23               	/* frame size = 0 */
+  24               	.LM2:
+  25 0000 90E0      		ldi r25,lo8(0)
+  26               	.LVL1:
+  27               	.L5:
+  28               	.LM3:
+  29 0002 C198      		cbi 56-32,1
+  30               	.LM4:
+  31 0004 87FF      		sbrs r24,7
+  32 0006 00C0      		rjmp .L2
+  33 0008 C09A      		sbi 56-32,0
+  34 000a 00C0      		rjmp .L3
+  35               	.L2:
+  36               	.LM5:
+  37 000c C098      		cbi 56-32,0
+  38               	.L3:
+  39               	.LM6:
+  40 000e C19A      		sbi 56-32,1
+  41               	.LM7:
+  42 0010 9F5F      		subi r25,lo8(-(1))
+  43 0012 9830      		cpi r25,lo8(8)
+  44 0014 01F0      		breq .L4
+  45               	.LM8:
+  46 0016 880F      		lsl r24
+  47               	.LVL2:
+  48 0018 00C0      		rjmp .L5
+  49               	.L4:
+  50               	.LM9:
+  51 001a C198      		cbi 56-32,1
+  52               	/* epilogue start */
+  53               	.LM10:
+  54 001c 0895      		ret
+  55               	.LFE8:
+  57               	.global	LoadConf
+  59               	LoadConf:
+  60               	.LFB7:
+  61               	.LM11:
+  62               	/* prologue: function */
+  63               	/* frame size = 0 */
+  64               	.LM12:
+  65 001e DF98      		cbi 59-32,7
+  66               	.LM13:
+  67 0020 C29A      		sbi 56-32,2
+  68               	.LBB38:
+  69               	.LBB39:
+  70               	.LM14:
+  71 0022 87B3      		in r24,55-32
+  72 0024 8360      		ori r24,lo8(3)
+  73 0026 87BB      		out 55-32,r24
+  74               	.LBE39:
+  75               	.LBE38:
+  76               	.LM15:
+  77 0028 88E0      		ldi r24,lo8(8)
+  78 002a 00D0      		rcall PutChar
+  79               	.LM16:
+  80 002c 88E0      		ldi r24,lo8(8)
+  81 002e 00D0      		rcall PutChar
+  82               	.LM17:
+  83 0030 80E0      		ldi r24,lo8(0)
+  84 0032 00D0      		rcall PutChar
+  85               	.LM18:
+  86 0034 80E0      		ldi r24,lo8(0)
+  87 0036 00D0      		rcall PutChar
+  88               	.LM19:
+  89 0038 80E0      		ldi r24,lo8(0)
+  90 003a 00D0      		rcall PutChar
+  91               	.LM20:
+  92 003c 87EE      		ldi r24,lo8(-25)
+  93 003e 00D0      		rcall PutChar
+  94               	.LM21:
+  95 0040 8BEB      		ldi r24,lo8(-69)
+  96 0042 00D0      		rcall PutChar
+  97               	.LM22:
+  98 0044 80E0      		ldi r24,lo8(0)
+  99 0046 00D0      		rcall PutChar
+ 100               	.LM23:
+ 101 0048 80E0      		ldi r24,lo8(0)
+ 102 004a 00D0      		rcall PutChar
+ 103               	.LM24:
+ 104 004c 80E0      		ldi r24,lo8(0)
+ 105 004e 00D0      		rcall PutChar
+ 106               	.LM25:
+ 107 0050 87EE      		ldi r24,lo8(-25)
+ 108 0052 00D0      		rcall PutChar
+ 109               	.LM26:
+ 110 0054 8AEA      		ldi r24,lo8(-86)
+ 111 0056 00D0      		rcall PutChar
+ 112               	.LM27:
+ 113 0058 83E4      		ldi r24,lo8(67)
+ 114 005a 00D0      		rcall PutChar
+ 115               	.LM28:
+ 116 005c 8EE4      		ldi r24,lo8(78)
+ 117 005e 00D0      		rcall PutChar
+ 118               	.LM29:
+ 119 0060 80E2      		ldi r24,lo8(32)
+ 120 0062 00D0      		rcall PutChar
+ 121               	.LM30:
+ 122 0064 C298      		cbi 56-32,2
+ 123               	.LM31:
+ 124 0066 DF9A      		sbi 59-32,7
+ 125               	.LBB40:
+ 126               	.LBB41:
+ 127               	.LBB42:
+ 128               	.LBB43:
+ 129               	.LM32:
+ 130 0068 8AEF      		ldi r24,lo8(250)
+ 131 006a 90E0      		ldi r25,hi8(250)
+ 132               	.LVL3:
+ 133               	/* #APP */
+ 134               	 ;  105 "c:/winavr/lib/gcc/../../avr/include/util/delay_basic.h" 1
+ 135 006c 0197      		1: sbiw r24,1
+ 136 006e 01F4      		brne 1b
+ 137               	 ;  0 "" 2
+ 138               	/* epilogue start */
+ 139               	/* #NOAPP */
+ 140               	.LBE43:
+ 141               	.LBE42:
+ 142               	.LBE41:
+ 143               	.LBE40:
+ 144               	.LM33:
+ 145 0070 0895      		ret
+ 146               	.LFE7:
+ 148               	.global	EnableTX
+ 150               	EnableTX:
+ 151               	.LFB9:
+ 152               	.LM34:
+ 153               	/* prologue: function */
+ 154               	/* frame size = 0 */
+ 155               	.LM35:
+ 156 0072 87B3      		in r24,55-32
+ 157 0074 8360      		ori r24,lo8(3)
+ 158 0076 87BB      		out 55-32,r24
+ 159               	/* epilogue start */
+ 160               	.LM36:
+ 161 0078 0895      		ret
+ 162               	.LFE9:
+ 164               	.global	__vector_12
+ 166               	__vector_12:
+ 167               	.LFB10:
+ 168               	.LM37:
+ 169 007a 1F92      		push __zero_reg__
+ 170 007c 0F92      		push r0
+ 171 007e 0FB6      		in r0,__SREG__
+ 172 0080 0F92      		push r0
+ 173 0082 1124      		clr __zero_reg__
+ 174 0084 8F93      		push r24
+ 175               	/* prologue: Signal */
+ 176               	/* frame size = 0 */
+ 177               	.LM38:
+ 178               	/* #APP */
+ 179               	 ;  141 "raketka.c" 1
+ 180 0086 A895      		wdr
+ 181               	 ;  0 "" 2
+ 182               	.LM39:
+ 183               	/* #NOAPP */
+ 184 0088 8091 0000 		lds r24,id_yd
+ 185 008c 8F5F      		subi r24,lo8(-(1))
+ 186 008e 8093 0000 		sts id_yd,r24
+ 187               	.LM40:
+ 188 0092 81E0      		ldi r24,lo8(1)
+ 189 0094 8093 0000 		sts flag,r24
+ 190               	.LM41:
+ 191 0098 80E8      		ldi r24,lo8(-128)
+ 192 009a 88B9      		out 40-32,r24
+ 193               	/* epilogue start */
+ 194               	.LM42:
+ 195 009c 8F91      		pop r24
+ 196 009e 0F90      		pop r0
+ 197 00a0 0FBE      		out __SREG__,r0
+ 198 00a2 0F90      		pop r0
+ 199 00a4 1F90      		pop __zero_reg__
+ 200 00a6 1895      		reti
+ 201               	.LFE10:
+ 203               	.global	main
+ 205               	main:
+ 206               	.LFB6:
+ 207               	.LM43:
+ 208 00a8 DF92      		push r13
+ 209 00aa EF92      		push r14
+ 210 00ac FF92      		push r15
+ 211 00ae 0F93      		push r16
+ 212 00b0 1F93      		push r17
+ 213 00b2 CF93      		push r28
+ 214 00b4 DF93      		push r29
+ 215               	/* prologue: function */
+ 216               	/* frame size = 0 */
+ 217               	.LM44:
+ 218 00b6 80E0      		ldi r24,lo8(0)
+ 219 00b8 90E0      		ldi r25,hi8(0)
+ 220 00ba 00D0      		rcall __eerd_byte_tn24
+ 221 00bc 81BF      		out 81-32,r24
+ 222               	.LM45:
+ 223 00be 8BE0      		ldi r24,lo8(11)
+ 224 00c0 80B9      		out 32-32,r24
+ 225               	.LM46:
+ 226 00c2 87E0      		ldi r24,lo8(7)
+ 227 00c4 87BB      		out 55-32,r24
+ 228               	.LM47:
+ 229 00c6 18BA      		out 56-32,__zero_reg__
+ 230               	.LM48:
+ 231 00c8 88E9      		ldi r24,lo8(-104)
+ 232 00ca 8ABB      		out 58-32,r24
+ 233               	.LM49:
+ 234 00cc 80E1      		ldi r24,lo8(16)
+ 235 00ce 8BBB      		out 59-32,r24
+ 236               	.LM50:
+ 237 00d0 86E0      		ldi r24,lo8(6)
+ 238 00d2 81B9      		out 33-32,r24
+ 239               	.LM51:
+ 240 00d4 88E1      		ldi r24,lo8(24)
+ 241 00d6 81BD      		out 65-32,r24
+ 242               	.LM52:
+ 243 00d8 89E2      		ldi r24,lo8(41)
+ 244 00da 81BD      		out 65-32,r24
+ 245               	.LM53:
+ 246 00dc 1092 0000 		sts flag,__zero_reg__
+ 247               	.LM54:
+ 248 00e0 85B7      		in r24,85-32
+ 249 00e2 877E      		andi r24,lo8(-25)
+ 250 00e4 85BF      		out 85-32,r24
+ 251               	.LM55:
+ 252 00e6 85B7      		in r24,85-32
+ 253 00e8 8062      		ori r24,lo8(32)
+ 254 00ea 85BF      		out 85-32,r24
+ 255               	.LM56:
+ 256 00ec 1092 0000 		sts id_yd,__zero_reg__
+ 257               	.LBB44:
+ 258               	.LBB45:
+ 259               	.LBB46:
+ 260               	.LBB47:
+ 261               	.LM57:
+ 262 00f0 98E8      		ldi r25,lo8(5000)
+ 263 00f2 E92E      		mov r14,r25
+ 264 00f4 93E1      		ldi r25,hi8(5000)
+ 265 00f6 F92E      		mov r15,r25
+ 266               	.LBE47:
+ 267               	.LBE46:
+ 268               	.LBE45:
+ 269               	.LBE44:
+ 270               	.LM58:
+ 271 00f8 8BE1      		ldi r24,lo8(27)
+ 272 00fa D82E      		mov r13,r24
+ 273               	.LBB51:
+ 274               	.LBB52:
+ 275               	.LBB53:
+ 276               	.LBB54:
+ 277               	.LM59:
+ 278 00fc C4EC      		ldi r28,lo8(2500)
+ 279 00fe D9E0      		ldi r29,hi8(2500)
+ 280               	.LBE54:
+ 281               	.LBE53:
+ 282               	.LBE52:
+ 283               	.LBE51:
+ 284               	.LBB58:
+ 285               	.LBB59:
+ 286               	.LBB60:
+ 287               	.LBB61:
+ 288 0100 0AEC      		ldi r16,lo8(2250)
+ 289 0102 18E0      		ldi r17,hi8(2250)
+ 290               	.LVL4:
+ 291               	.L16:
+ 292               	.LBE61:
+ 293               	.LBE60:
+ 294               	.LBE59:
+ 295               	.LBE58:
+ 296               	.LM60:
+ 297 0104 DB98      		cbi 59-32,3
+ 298               	.LM61:
+ 299 0106 1092 0000 		sts flag,__zero_reg__
+ 300               	.LBB65:
+ 301               	.LBB50:
+ 302               	.LBB49:
+ 303               	.LBB48:
+ 304               	.LM62:
+ 305 010a C701      		movw r24,r14
+ 306               	.LVL5:
+ 307               	/* #APP */
+ 308               	 ;  105 "c:/winavr/lib/gcc/../../avr/include/util/delay_basic.h" 1
+ 309 010c 0197      		1: sbiw r24,1
+ 310 010e 01F4      		brne 1b
+ 311               	 ;  0 "" 2
+ 312               	/* #NOAPP */
+ 313               	.LBE48:
+ 314               	.LBE49:
+ 315               	.LBE50:
+ 316               	.LBE65:
+ 317               	.LM63:
+ 318 0110 D8B8      		out 40-32,r13
+ 319               	.LBB66:
+ 320               	.LBB57:
+ 321               	.LBB56:
+ 322               	.LBB55:
+ 323               	.LM64:
+ 324 0112 CE01      		movw r24,r28
+ 325               	.LVL6:
+ 326               	/* #APP */
+ 327               	 ;  105 "c:/winavr/lib/gcc/../../avr/include/util/delay_basic.h" 1
+ 328 0114 0197      		1: sbiw r24,1
+ 329 0116 01F4      		brne 1b
+ 330               	 ;  0 "" 2
+ 331               	/* #NOAPP */
+ 332               	.LBE55:
+ 333               	.LBE56:
+ 334               	.LBE57:
+ 335               	.LBE66:
+ 336               	.LM65:
+ 337               	/* #APP */
+ 338               	 ;  69 "raketka.c" 1
+ 339 0118 7894      		sei
+ 340               	 ;  0 "" 2
+ 341               	/* #NOAPP */
+ 342 011a 00C0      		rjmp .L14
+ 343               	.LVL7:
+ 344               	.L15:
+ 345               	.LM66:
+ 346               	/* #APP */
+ 347               	 ;  70 "raketka.c" 1
+ 348 011c 8895      		sleep
+ 349               		
+ 350               	 ;  0 "" 2
+ 351               	.LVL8:
+ 352               	/* #NOAPP */
+ 353               	.L14:
+ 354 011e 8091 0000 		lds r24,flag
+ 355               	.LVL9:
+ 356 0122 8823      		tst r24
+ 357 0124 01F0      		breq .L15
+ 358               	.LM67:
+ 359               	/* #APP */
+ 360               	 ;  73 "raketka.c" 1
+ 361 0126 F894      		cli
+ 362               	 ;  0 "" 2
+ 363               	.LM68:
+ 364               	/* #NOAPP */
+ 365 0128 DB9A      		sbi 59-32,3
+ 366               	.LBB67:
+ 367               	.LBB68:
+ 368               	.LBB69:
+ 369               	.LBB70:
+ 370               	.LM69:
+ 371 012a CE01      		movw r24,r28
+ 372               	.LVL10:
+ 373               	/* #APP */
+ 374               	 ;  105 "c:/winavr/lib/gcc/../../avr/include/util/delay_basic.h" 1
+ 375 012c 0197      		1: sbiw r24,1
+ 376 012e 01F4      		brne 1b
+ 377               	 ;  0 "" 2
+ 378               	/* #NOAPP */
+ 379               	.LBE70:
+ 380               	.LBE69:
+ 381               	.LBE68:
+ 382               	.LBE67:
+ 383               	.LM70:
+ 384 0130 00D0      		rcall LoadConf
+ 385               	.LVL11:
+ 386               	.LM71:
+ 387 0132 87EE      		ldi r24,lo8(-25)
+ 388 0134 00D0      		rcall PutChar
+ 389               	.LM72:
+ 390 0136 8AEA      		ldi r24,lo8(-86)
+ 391 0138 00D0      		rcall PutChar
+ 392               	.LM73:
+ 393 013a 8091 0000 		lds r24,id_yd
+ 394 013e 00D0      		rcall PutChar
+ 395               	.LM74:
+ 396 0140 DF98      		cbi 59-32,7
+ 397               	.LBB71:
+ 398               	.LBB64:
+ 399               	.LBB63:
+ 400               	.LBB62:
+ 401               	.LM75:
+ 402 0142 C801      		movw r24,r16
+ 403               	.LVL12:
+ 404               	/* #APP */
+ 405               	 ;  105 "c:/winavr/lib/gcc/../../avr/include/util/delay_basic.h" 1
+ 406 0144 0197      		1: sbiw r24,1
+ 407 0146 01F4      		brne 1b
+ 408               	 ;  0 "" 2
+ 409               	/* #NOAPP */
+ 410               	.LBE62:
+ 411               	.LBE63:
+ 412               	.LBE64:
+ 413               	.LBE71:
+ 414               	.LM76:
+ 415               	/* #APP */
+ 416               	 ;  83 "raketka.c" 1
+ 417 0148 A895      		wdr
+ 418               	 ;  0 "" 2
+ 419               	/* #NOAPP */
+ 420 014a 00C0      		rjmp .L16
+ 421               	.LFE6:
+ 423               		.comm id_yd,1,1
+ 424               		.comm flag,1,1
+ 481               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 raketka.c
+C:\DOCUME~1\07C4~1\LOCALS~1\Temp/ccjjsZEb.s:2      *ABS*:0000003f __SREG__
+C:\DOCUME~1\07C4~1\LOCALS~1\Temp/ccjjsZEb.s:3      *ABS*:0000003e __SP_H__
+C:\DOCUME~1\07C4~1\LOCALS~1\Temp/ccjjsZEb.s:4      *ABS*:0000003d __SP_L__
+C:\DOCUME~1\07C4~1\LOCALS~1\Temp/ccjjsZEb.s:5      *ABS*:00000034 __CCP__
+C:\DOCUME~1\07C4~1\LOCALS~1\Temp/ccjjsZEb.s:6      *ABS*:00000000 __tmp_reg__
+C:\DOCUME~1\07C4~1\LOCALS~1\Temp/ccjjsZEb.s:7      *ABS*:00000001 __zero_reg__
+C:\DOCUME~1\07C4~1\LOCALS~1\Temp/ccjjsZEb.s:18     .text:00000000 PutChar
+C:\DOCUME~1\07C4~1\LOCALS~1\Temp/ccjjsZEb.s:59     .text:0000001e LoadConf
+C:\DOCUME~1\07C4~1\LOCALS~1\Temp/ccjjsZEb.s:150    .text:00000072 EnableTX
+C:\DOCUME~1\07C4~1\LOCALS~1\Temp/ccjjsZEb.s:166    .text:0000007a __vector_12
+                            *COM*:00000001 id_yd
+                            *COM*:00000001 flag
+C:\DOCUME~1\07C4~1\LOCALS~1\Temp/ccjjsZEb.s:205    .text:000000a8 main
+
+UNDEFINED SYMBOLS
+__eerd_byte_tn24
+__do_clear_bss

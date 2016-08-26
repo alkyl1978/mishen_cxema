@@ -1,0 +1,119 @@
+   1               		.file	"init.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+  15               	.Ltext0:
+  16               	.global	init_pr
+  18               	init_pr:
+  19               	.LFB2:
+  20               	.LM1:
+  21               	/* prologue: function */
+  22               	/* frame size = 0 */
+  23               	.LM2:
+  24 0000 80E1      		ldi r24,lo8(16)
+  25 0002 84B9      		out 36-32,r24
+  26               	.LM3:
+  27 0004 17B8      		out 39-32,__zero_reg__
+  28               	.LM4:
+  29 0006 1AB8      		out 42-32,__zero_reg__
+  30               	.LM5:
+  31 0008 8FEE      		ldi r24,lo8(-17)
+  32 000a 85B9      		out 37-32,r24
+  33               	.LM6:
+  34 000c 8FEF      		ldi r24,lo8(-1)
+  35 000e 88B9      		out 40-32,r24
+  36               	.LM7:
+  37 0010 8BB9      		out 43-32,r24
+  38               	.LM8:
+  39 0012 85E8      		ldi r24,lo8(-123)
+  40 0014 8093 6400 		sts 100,r24
+  41               	.LM9:
+  42 0018 1092 8000 		sts 128,__zero_reg__
+  43               	.LM10:
+  44 001c 1092 8200 		sts 130,__zero_reg__
+  45               	.LM11:
+  46 0020 84EF      		ldi r24,lo8(-12)
+  47 0022 8093 8900 		sts 137,r24
+  48               	.LM12:
+  49 0026 83E2      		ldi r24,lo8(35)
+  50 0028 8093 8800 		sts 136,r24
+  51               	.LM13:
+  52 002c 8DE0      		ldi r24,lo8(13)
+  53 002e 8093 8100 		sts 129,r24
+  54               	.LM14:
+  55 0032 82E0      		ldi r24,lo8(2)
+  56 0034 8093 B000 		sts 176,r24
+  57               	.LM15:
+  58 0038 83EC      		ldi r24,lo8(-61)
+  59 003a 8093 B300 		sts 179,r24
+  60               	.LM16:
+  61 003e 8AE0      		ldi r24,lo8(10)
+  62 0040 8093 6900 		sts 105,r24
+  63               	.LM17:
+  64 0044 00D0      		rcall Init_dat_r33
+  65               	/* epilogue start */
+  66               	.LM18:
+  67 0046 0895      		ret
+  68               	.LFE2:
+  70               	.global	Init_dat_r33
+  72               	Init_dat_r33:
+  73               	.LFB4:
+  74               	.LM19:
+  75               	/* prologue: function */
+  76               	/* frame size = 0 */
+  77               	.LM20:
+  78 0048 23E3      		ldi r18,lo8(51)
+  79 004a 2093 0000 		sts code,r18
+  80               	.LM21:
+  81 004e 93E0      		ldi r25,lo8(3)
+  82 0050 9DBB      		out 61-32,r25
+  83               	.LM22:
+  84 0052 1CBA      		out 60-32,__zero_reg__
+  85               	.LM23:
+  86 0054 80E8      		ldi r24,lo8(-128)
+  87 0056 8093 6D00 		sts 109,r24
+  88               	.LM24:
+  89 005a 88E0      		ldi r24,lo8(8)
+  90 005c 8093 6C00 		sts 108,r24
+  91               	.LM25:
+  92 0060 8093 6B00 		sts 107,r24
+  93               	.LM26:
+  94 0064 87E0      		ldi r24,lo8(7)
+  95 0066 8093 6800 		sts 104,r24
+  96               	.LM27:
+  97 006a 1BBA      		out 59-32,__zero_reg__
+  98               	.LM28:
+  99 006c 1092 B100 		sts 177,__zero_reg__
+ 100               	.LM29:
+ 101 0070 2093 0000 		sts Buf_out,r18
+ 102               	.LM30:
+ 103 0074 9093 0000 		sts Buf_out+1,r25
+ 104               	.LM31:
+ 105 0078 1092 0000 		sts Buf_out+3,__zero_reg__
+ 106               	.LM32:
+ 107 007c 1092 0000 		sts Buf_out+4,__zero_reg__
+ 108               	.LM33:
+ 109 0080 8093 0000 		sts w_cont,r24
+ 110               	/* epilogue start */
+ 111               	.LM34:
+ 112 0084 0895      		ret
+ 113               	.LFE4:
+ 147               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 init.c
+C:\DOCUME~1\07C4~1\LOCALS~1\Temp/cc0rdgA1.s:2      *ABS*:0000003f __SREG__
+C:\DOCUME~1\07C4~1\LOCALS~1\Temp/cc0rdgA1.s:3      *ABS*:0000003e __SP_H__
+C:\DOCUME~1\07C4~1\LOCALS~1\Temp/cc0rdgA1.s:4      *ABS*:0000003d __SP_L__
+C:\DOCUME~1\07C4~1\LOCALS~1\Temp/cc0rdgA1.s:5      *ABS*:00000034 __CCP__
+C:\DOCUME~1\07C4~1\LOCALS~1\Temp/cc0rdgA1.s:6      *ABS*:00000000 __tmp_reg__
+C:\DOCUME~1\07C4~1\LOCALS~1\Temp/cc0rdgA1.s:7      *ABS*:00000001 __zero_reg__
+C:\DOCUME~1\07C4~1\LOCALS~1\Temp/cc0rdgA1.s:18     .text:00000000 init_pr
+C:\DOCUME~1\07C4~1\LOCALS~1\Temp/cc0rdgA1.s:72     .text:00000048 Init_dat_r33
+
+UNDEFINED SYMBOLS
+code
+Buf_out
+w_cont
